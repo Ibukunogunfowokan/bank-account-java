@@ -1,15 +1,32 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.time.LocalDate;
+
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Bank bank = new Bank();
+        bank.loadAccounts();
+        SavingsAccount savingsAccount = new SavingsAccount("Ibukunoluwa Ogunfowokan", "09876543555", 2000, 2, 200);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        CurrentAccount currentAccount = new CurrentAccount("ibukunoluwa Ogunfowokan", "0024703795", 2000, 200);
+
+        try {
+            LocalDate date = LocalDate.parse("2026-08-01");
+            FixedDepositAccount fixedDepositAccount = new FixedDepositAccount("Ibukun Ogunfowokan", "8168406592", 6000, 2, date);
+            bank.addAccount(fixedDepositAccount);
+
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Failed to create account" + e.getMessage());
+
         }
+        bank.addAccount(savingsAccount);
+        bank.addAccount(currentAccount);
+
+        bank.listAccount();
+        System.out.println("Trying to withdraw from fixed deposit account...");
+
+        System.out.println("tring to break the savings by withdrawing more than i should...");
+        savingsAccount.withdraw(5000);
+        bank.saveAccounts();
     }
 }

@@ -1,24 +1,29 @@
-abstract class BankAccount {
-    protected String ownerName;
-    protected  String accountNumber;
-    protected double balance;
+import java.io.Serial;
+import java.io.Serializable;
 
-    public BankAccount(String ownerName,String accountNumber, double initialBalance){
-        this.ownerName =ownerName;
+abstract class BankAccount implements Serializable {
+    protected String ownerName;
+    protected String accountNumber;
+    protected double balance;
+    @Serial
+    private static final long serialVersionUID = 1L;
+
+    public BankAccount(String ownerName, String accountNumber, double initialBalance) {
+        this.ownerName = ownerName;
         this.accountNumber = accountNumber;
         this.balance = initialBalance;
     }
 
-    public void deposit(double amount){
-        if(amount <=0){
+    public void deposit(double amount) {
+        if (amount <= 0) {
             System.out.println("Amount must be greater than 0");
             return;
         }
-        balance+=amount;
-        System.out.println("Deposited: " + amount + " | New balance: "+ balance);
+        balance += amount;
+        System.out.println("Deposited: " + amount + " | New balance: " + balance);
     }
 
-    public double getBalance(){
+    public double getBalance() {
         return balance;
     }
 

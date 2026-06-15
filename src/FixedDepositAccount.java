@@ -1,14 +1,17 @@
+import java.io.Serial;
 import java.time.LocalDate;
 
 public class FixedDepositAccount extends BankAccount {
     protected double interestRate;
     protected LocalDate maturityDate;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     public FixedDepositAccount(String ownerName, String accountNumber, double initialAmount, double interestRate, LocalDate maturityDate) {
 
         super(ownerName, accountNumber, initialAmount);
 
-        if (interestRate <= 0) {
+        if (interestRate < 0) {
             throw new IllegalArgumentException("Interest rate must be greater than 0");
         }
 

@@ -1,5 +1,9 @@
+import java.io.Serial;
+
 public class CurrentAccount extends BankAccount {
     protected double overDraftLimit;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     public CurrentAccount(String ownerName, String accountNumber, double initialAmount, double overDraftLimit) {
         super(ownerName, accountNumber, initialAmount);

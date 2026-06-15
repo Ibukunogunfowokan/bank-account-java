@@ -1,6 +1,10 @@
+import java.io.Serial;
+
 public class SavingsAccount extends BankAccount {
     protected double interestRate;
     protected double minimumAmount;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     public SavingsAccount(String ownerName, String accountNumber, double initialBalance, double interestRate, double minimumAmount) {
         super(ownerName, accountNumber, initialBalance);
